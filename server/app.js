@@ -1,9 +1,14 @@
-var express = require('express')
-  , routes = require('./routes');
+const express = require('express')
+const app = express()
+app.use(express.static('../client/', {index: 'index.html'}))
 
-var app = module.exports = express.createServer();
+const server = app.listen(3000, function(){
+	console.log("Express server listening on port 3000");
+});
+var io = require('socket.io')(server);
 
-var io = require('socket.io')(app);
+const MeetingRoutes = require('./routes/meeting')
+app.use('/meeting', MeetingRoutes)
 
 io.on('connection', function(socket){
 	io.sockets.emit("user-joined", socket.id, io.engine.clientsCount, Object.keys(io.sockets.clients().sockets));
@@ -21,6 +26,4 @@ io.on('connection', function(socket){
 	})
 });
 
-app.listen(3000, function(){
-	console.log("Express server listening on port %d in %s mode", app.address().port, app.settings.env);
-});
+module.exports = server

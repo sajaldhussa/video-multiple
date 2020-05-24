@@ -19,7 +19,7 @@ function pageReady() {
 
     var constraints = {
         video: true,
-        audio: false,
+        audio: true,
     };
 
     if(navigator.mediaDevices.getUserMedia) {
@@ -84,7 +84,7 @@ function pageReady() {
 
 function getUserMediaSuccess(stream) {
     localStream = stream;
-    localVideo.src = window.URL.createObjectURL(stream);
+    localVideo.srcObject = stream;
 }
 
 function gotRemoteStream(event, id) {
@@ -94,13 +94,15 @@ function gotRemoteStream(event, id) {
         div    = document.createElement('div')
 
     video.setAttribute('data-socket', id);
-    video.src         = window.URL.createObjectURL(event.stream);
+    video.srcObject = event.stream;
     video.autoplay    = true; 
-    video.muted       = true;
+    video.muted       = false;
     video.playsinline = true;
     
     div.appendChild(video);      
-    document.querySelector('.videos').appendChild(div);      
+    document.querySelector('.videos').appendChild(div);
+    
+    var promise = video.play();
 }
 
 function gotMessageFromServer(fromId, message) {
