@@ -16,6 +16,7 @@ function pageReady() {
 
     localVideo = document.getElementById('localVideo');
     remoteVideo = document.getElementById('remoteVideo');
+    let roomName;
 
     var constraints = {
         video: true,
@@ -28,6 +29,9 @@ function pageReady() {
             .then(function(){
 
                 socket = io.connect(config.host, {secure: true});
+                const url = window.location.href
+                const meetingId = url.split("meeting/")[1];
+                socket.emit('create', meetingId);
                 socket.on('signal', gotMessageFromServer);    
 
                 socket.on('connect', function(){
@@ -41,7 +45,9 @@ function pageReady() {
                     });
 
 
-                    socket.on('user-joined', function(id, count, clients){
+                    socket.on('user-joined', function(id, count, clients, room){
+                        console.log(room);
+                        roomName = room;
                         clients.forEach(function(socketListId) {
                             if(!connections[socketListId]){
                                 connections[socketListId] = new RTCPeerConnection(peerConnectionConfig);
@@ -49,7 +55,7 @@ function pageReady() {
                                 connections[socketListId].onicecandidate = function(){
                                     if(event.candidate != null) {
                                         console.log('SENDING ICE');
-                                        socket.emit('signal', socketListId, JSON.stringify({'ice': event.candidate}));
+                                        socket.emit('signal', socketListId, JSON.stringify({'ice': event.candidate}),roomName);
                                     }
                                 }
 
@@ -69,7 +75,7 @@ function pageReady() {
                             connections[id].createOffer().then(function(description){
                                 connections[id].setLocalDescription(description).then(function() {
                                     // console.log(connections);
-                                    socket.emit('signal', id, JSON.stringify({'sdp': connections[id].localDescription}));
+                                    socket.emit('signal', id, JSON.stringify({'sdp': connections[id].localDescription}),roomName);
                                 }).catch(e => console.log(e));        
                             });
                         }

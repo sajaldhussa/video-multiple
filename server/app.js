@@ -10,8 +10,16 @@ var io = require('socket.io')(server);
 const MeetingRoutes = require('./routes/meeting')
 app.use('/meeting', MeetingRoutes)
 
+app.set('socketio', io);
+
 io.on('connection', function(socket){
-	io.sockets.emit("user-joined", socket.id, io.engine.clientsCount, Object.keys(io.sockets.clients().sockets));
+   socket.on('create', function(room) {
+      
+      socket.join(room);
+      io.sockets.in(room).emit("user-joined", socket.id, io.nsps['/'].adapter.rooms[room].length, Object.keys(io.nsps['/'].adapter.rooms[room].sockets), room);
+  });
+
+	
 
 	socket.on('signal', (toId, message) => {
 		io.to(toId).emit('signal', socket.id, message);

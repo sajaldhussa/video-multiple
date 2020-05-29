@@ -1,4 +1,5 @@
 const express = require('express')
+const app = express()
 const Router = express.Router();
 Router.use(express.urlencoded())
 
@@ -17,23 +18,7 @@ var io = require('socket.io')(server);
 Router.get('/:id', function (req, res) {
     const meetingId = req.params.id;
     res.sendFile('index.html', { root: '../client' });
-    io.on('connection', function(socket){
-        socket.join(meetingId, function(room) {
-            room.emit("user-joined", Object.keys(room.sockets.clients().sockets).length, Object.keys(room.sockets.clients().sockets));
-
-            room.on('signal', (toId, message) => {
-                room.emit('signal', socket.id, message);
-              });
-        
-              room.on("message", function(data){
-                room.emit("broadcast-message", socket.id, data);
-            })
-        
-            room.on('disconnect', function() {
-                room.emit("user-left", socket.id);
-            })
-          });
-    });
+    app.set('meetingId', meetingId);
   })
 
 let save = function (email) {
