@@ -1,4 +1,4 @@
-/*.soundbar {
+.soundbar {
 	background-color: #CCC;
 	height: 20px;
 	width: 100%;
@@ -13,7 +13,6 @@
 	height: 20px;
 	background-color: green;
 }
-*/
 .videos {
 	display: flex;
 	flex-wrap: wrap;
@@ -25,4 +24,7 @@
 
 video {
 	width: 100%;
+}
+body{
+	margin: 0px;
 }

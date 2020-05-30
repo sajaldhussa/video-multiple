@@ -107,8 +107,12 @@ function gotRemoteStream(event, id) {
     
     div.appendChild(video);      
     document.querySelector('.videos').appendChild(div);
-    
-    var promise = video.play();
+    updateLayOut();
+}
+
+function updateLayOut(){
+    var videos = document.querySelector('video');
+    console.log(videos.length);
 }
 
 function gotMessageFromServer(fromId, message) {
