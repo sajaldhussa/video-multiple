@@ -105,11 +105,14 @@ function gotRemoteStream(event, id) {
     video.muted       = false;
     video.playsinline = true;
 
+    var iconDiv = document.createElement('div');
+    iconDiv.className ="video-control";
     var icon = document.createElement('i');
     icon.className ="fas fa-volume-mute";
 
+    iconDiv.appendChild(icon);
     div.appendChild(video);   
-    div.appendChild(icon);      
+    div.appendChild(iconDiv);      
     document.querySelector('.videos').appendChild(div);
     updateLayOut();
 }
@@ -119,10 +122,29 @@ function updateLayOut(){
     var height = screen.height;
     var width = screen.width;
     var peers = videos.length;
+    var gridRow;
+    var gridCol;
 
+    if(peers<=2){
+        gridRow=1;
+        gridCol=2;
+    }
+    if(peers>2 && peers<=6){
+        gridRow=2;
+    }
+    if(peers>6 && peers<=9){
+        gridRow=3;
+    }
+    if(peers>9 && peers<=12){
+        gridRow=4;
+    }
+
+    if(peers>2){
+        gridCol=3;  
+    }
     for (var i = 0; i < peers; i++) {
-        videos[i].style.width=(width/peers+"px");
-        videos[i].style.height=(height/peers+"px");
+        videos[i].style.width=((width/peers)-50+"px");
+        videos[i].style.height=(height/gridRow+"px");
     }
 }
 

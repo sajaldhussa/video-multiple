@@ -3,6 +3,10 @@
 	flex-wrap: wrap;
 }
 
+.video-control{
+	position: absolute;
+	bottom: 0px;
+}
 video {
 	width: 100%;
 }
