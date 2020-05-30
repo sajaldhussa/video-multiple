@@ -122,6 +122,11 @@ function updateLayOut(){
         
     document.querySelectorAll('video').style.width = width/peers;
     document.querySelectorAll('video').style.height = height/peers;
+
+    for (var i = 0; i < peers; i++) {
+        videos[i].style.width=(width/peers+"px");
+        videos[i].style.height=(height/peers+"px");
+    }
 }
 
 function gotMessageFromServer(fromId, message) {
