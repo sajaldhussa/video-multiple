@@ -107,7 +107,7 @@ function gotRemoteStream(event, id) {
 
     var icon = document.createElement('i');
     icon.className ="fas fa-volume-mute";
-    
+
     div.appendChild(video);   
     div.appendChild(icon);      
     document.querySelector('.videos').appendChild(div);
@@ -116,7 +116,12 @@ function gotRemoteStream(event, id) {
 
 function updateLayOut(){
     var videos = document.querySelectorAll('video');
-    console.log(videos.length);
+    var height = screen.height;
+    var width = screen.width;
+    var peers = videos.length;
+        
+    document.querySelectorAll('video').style.width = width/peers;
+    document.querySelectorAll('video').style.height = height/peers;
 }
 
 function gotMessageFromServer(fromId, message) {
