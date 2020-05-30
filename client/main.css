@@ -1,18 +1,3 @@
-.soundbar {
-	background-color: #CCC;
-	height: 20px;
-	width: 100%;
-	position: relative;
-}
-
-.currentVolume {
-	position: absolute;
-	left: 0;
-	top: 0;
-	width: 0;
-	height: 20px;
-	background-color: green;
-}
 .videos {
 	display: flex;
 	flex-wrap: wrap;

@@ -104,14 +104,15 @@ function gotRemoteStream(event, id) {
     video.autoplay    = true; 
     video.muted       = false;
     video.playsinline = true;
-    
-    div.appendChild(video);      
+    var icon = '<i class="fas fa-volume-mute"></i>';
+    div.appendChild(video);   
+    div.appendChild(icon);      
     document.querySelector('.videos').appendChild(div);
     updateLayOut();
 }
 
 function updateLayOut(){
-    var videos = document.querySelector('video');
+    var videos = document.querySelectorAll('video');
     console.log(videos.length);
 }
 
