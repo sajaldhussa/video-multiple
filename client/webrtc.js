@@ -104,7 +104,10 @@ function gotRemoteStream(event, id) {
     video.autoplay    = true; 
     video.muted       = false;
     video.playsinline = true;
-    var icon = '<i class="fas fa-volume-mute"></i>';
+
+    var icon = document.createElement('i');
+    icon.className ="fas fa-volume-mute";
+    
     div.appendChild(video);   
     div.appendChild(icon);      
     document.querySelector('.videos').appendChild(div);
