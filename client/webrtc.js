@@ -142,7 +142,7 @@ function updateLayOut(){
         gridCol=3;  
     }
     for (var i = 0; i < peers; i++) {
-        videos[i].style.width=(width/gridCol+"px");
+        videos[i].style.width=((width/gridCol)-10+"px");
         videos[i].style.height=(height/gridRow+"px");
     }
 }
