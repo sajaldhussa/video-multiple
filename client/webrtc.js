@@ -123,11 +123,10 @@ function updateLayOut(){
     var width = screen.width;
     var peers = videos.length;
     var gridRow;
-    var gridCol;
+    var gridCol =2;
 
     if(peers<=2){
         gridRow=1;
-        gridCol=2;
     }
     if(peers>2 && peers<=6){
         gridRow=2;
@@ -139,11 +138,11 @@ function updateLayOut(){
         gridRow=4;
     }
 
-    if(peers>2){
+    if(peers>4){
         gridCol=3;  
     }
     for (var i = 0; i < peers; i++) {
-        videos[i].style.width=((width/peers)-50+"px");
+        videos[i].style.width=(width/gridCol+"px");
         videos[i].style.height=(height/gridRow+"px");
     }
 }
