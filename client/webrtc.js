@@ -119,9 +119,6 @@ function updateLayOut(){
     var height = screen.height;
     var width = screen.width;
     var peers = videos.length;
-        
-    document.querySelectorAll('video').style.width = width/peers;
-    document.querySelectorAll('video').style.height = height/peers;
 
     for (var i = 0; i < peers; i++) {
         videos[i].style.width=(width/peers+"px");
