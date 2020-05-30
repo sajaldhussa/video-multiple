@@ -3,10 +3,6 @@
 	flex-wrap: wrap;
 }
 
-.videos > div {
-	width: 50%;
-}
-
 video {
 	width: 100%;
 }
