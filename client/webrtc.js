@@ -42,6 +42,7 @@ function pageReady() {
                         var video = document.querySelector('[data-socket="'+ id +'"]');
                         var parentDiv = video.parentElement;
                         video.parentElement.parentElement.removeChild(parentDiv);
+                        updateLayOut();
                     });
 
 
@@ -142,8 +143,8 @@ function updateLayOut(){
         gridCol=3;  
     }
     for (var i = 0; i < peers; i++) {
-        videos[i].style.width=((width/gridCol)-10+"px");
-        videos[i].style.height=(height/gridRow+"px");
+        videos[i].parentElement.style.width=((width/gridCol)-10+"px");
+        videos[i].parentElement.style.height=(height/gridRow-20+"px");
     }
 }
 
