@@ -1,6 +1,14 @@
 .videos {
-	display: flex;
-	flex-wrap: wrap;
+	display: grid;
+}
+.one-grid{
+	grid-template-columns: auto;
+}
+.two-grid{
+	grid-template-columns: auto auto;
+}
+.three-grid{
+	grid-template-columns: auto auto auto;
 }
 
 .video-control{

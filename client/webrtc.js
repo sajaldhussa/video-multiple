@@ -120,32 +120,22 @@ function gotRemoteStream(event, id) {
 
 function updateLayOut(){
     var videos = document.querySelectorAll('video');
-    var height = screen.height;
-    var width = screen.width;
     var peers = videos.length;
-    var gridRow;
-    var gridCol =2;
 
-    if(peers<=2){
-        gridRow=1;
+    var element = document.getElementById("videos");
+    if(peers<4){
+        element.classList.remove("one-grid");
+        element.classList.remove("three-grid");
+        element.classList.add("two-grid");
+    } else{
+        element.classList.remove("one-grid");
+        element.classList.remove("two-grid");
+        element.classList.add("three-grid");
     }
-    if(peers>2 && peers<=6){
-        gridRow=2;
-    }
-    if(peers>6 && peers<=9){
-        gridRow=3;
-    }
-    if(peers>9 && peers<=12){
-        gridRow=4;
-    }
-
-    if(peers>4){
-        gridCol=3;  
-    }
-    for (var i = 0; i < peers; i++) {
-        videos[i].parentElement.style.width=((width/gridCol)-10+"px");
-        videos[i].parentElement.style.height=(height/gridRow-20+"px");
-    }
+    
+    
+    
+    
 }
 
 function gotMessageFromServer(fromId, message) {
