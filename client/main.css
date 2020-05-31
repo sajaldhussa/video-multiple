@@ -1,5 +1,18 @@
 .videos {
 	display: grid;
+	width: 100%;
+	height: 100%;
+}
+.video-container{
+	width:100%;
+	height:100%;
+	overflow: hidden;
+}
+.video-container > video{
+	position: relative;
+	bottom:10%;
+	width:100%;
+	height:100%;
 }
 .one-grid{
 	grid-template-columns: auto;
@@ -18,6 +31,7 @@
 video {
 	width: 100%;
 }
-body{
+html,body{
 	margin: 0px;
+	height: 100%;
 }

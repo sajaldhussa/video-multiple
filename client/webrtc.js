@@ -112,6 +112,7 @@ function gotRemoteStream(event, id) {
     icon.className ="fas fa-volume-mute";
 
     iconDiv.appendChild(icon);
+    div.className("video-container");
     div.appendChild(video);   
     div.appendChild(iconDiv);      
     document.querySelector('.videos').appendChild(div);
@@ -123,7 +124,7 @@ function updateLayOut(){
     var peers = videos.length;
 
     var element = document.getElementById("videos");
-    if(peers<4){
+    if(peers<=4){
         element.classList.remove("one-grid");
         element.classList.remove("three-grid");
         element.classList.add("two-grid");
