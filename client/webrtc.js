@@ -112,7 +112,7 @@ function gotRemoteStream(event, id) {
     icon.className ="fas fa-volume-mute";
 
     iconDiv.appendChild(icon);
-    div.className("video-container");
+    div.className = "video-container";
     div.appendChild(video);   
     div.appendChild(iconDiv);      
     document.querySelector('.videos').appendChild(div);
