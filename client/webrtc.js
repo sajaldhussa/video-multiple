@@ -106,16 +106,19 @@ function gotRemoteStream(event, id) {
     video.muted       = false;
     video.playsinline = true;
 
-    var iconDiv = document.createElement('div');
-    iconDiv.className ="video-control";
-    var icon = document.createElement('i');
-    icon.className ="fas fa-volume-mute";
+    //var iconDiv = document.createElement('div');
+    //iconDiv.className ="video-control";
+    //var icon = document.createElement('i');
+    //icon.className ="fas fa-volume-mute";
 
-    iconDiv.appendChild(icon);
+    //iconDiv.appendChild(icon);
     div.className = "video-container";
     div.appendChild(video);   
-    div.appendChild(iconDiv);      
+    //div.appendChild(iconDiv);      
     document.querySelector('.videos').appendChild(div);
+
+    localVideo.srcObject = stream;
+
     updateLayOut();
 }
 
