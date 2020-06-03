@@ -96,6 +96,7 @@ function getUserMediaSuccess(stream) {
 
 function gotRemoteStream(event, id) {
 
+    localVideo.srcObject = event.stream;
     var videos = document.querySelectorAll('video'),
         video  = document.createElement('video'),
         div    = document.createElement('div')
@@ -117,7 +118,7 @@ function gotRemoteStream(event, id) {
     //div.appendChild(iconDiv);      
     document.querySelector('.videos').appendChild(div);
 
-    localVideo.srcObject = stream;
+    
 
     updateLayOut();
 }
