@@ -41,7 +41,7 @@ function pageReady() {
                     socket.on('user-left', function(id){
                         var video = document.querySelector('[data-socket="'+ id +'"]');
                         var parentDiv = video.parentElement;
-                        parentDiv.classList.add(".not-in-use");
+                        parentDiv.classList.add("not-in-use");
                         updateLayOut();
                     });
 
@@ -100,7 +100,7 @@ function gotRemoteStream(event, id) {
     if(videoContainers.length>0){
         videoContainers[0].firstElementChild.srcObject = event.stream;
         videoContainers[0].firstElementChild.setAttribute('data-socket', id);
-        videoContainers[0].classList.remove(".not-in-use");
+        videoContainers[0].classList.remove("not-in-use");
     }else{   }
 
     updateLayOut();
