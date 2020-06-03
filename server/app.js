@@ -11,7 +11,7 @@ const MeetingRoutes = require('./routes/meeting')
 app.use('/meeting', MeetingRoutes)
 
 app.set('socketio', io);
-const meetingId;;
+let meetingId;;
 io.on('connection', function(socket){
    socket.on('create', function(room) {
 	  meetingId = room;
