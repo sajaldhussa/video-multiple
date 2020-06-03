@@ -15,7 +15,7 @@ var peerConnectionConfig = {
 function pageReady() {
 
     localVideo = document.getElementById('localVideo');
-    remoteVideo = document.getElementById('remoteVideo');
+    
     let roomName;
 
     var constraints = {
@@ -96,36 +96,19 @@ function getUserMediaSuccess(stream) {
 
 function gotRemoteStream(event, id) {
 
-    localVideo.srcObject = event.stream;
-    var videos = document.querySelectorAll('video'),
-        video  = document.createElement('video'),
-        div    = document.createElement('div')
-
-    video.setAttribute('data-socket', id);
-    video.srcObject = event.stream;
-    video.autoplay    = true; 
-    video.muted       = false;
-    video.playsinline = true;
-
-    //var iconDiv = document.createElement('div');
-    //iconDiv.className ="video-control";
-    //var icon = document.createElement('i');
-    //icon.className ="fas fa-volume-mute";
-
-    //iconDiv.appendChild(icon);
-    div.className = "video-container";
-    div.appendChild(video);   
-    //div.appendChild(iconDiv);      
-    document.querySelector('.videos').appendChild(div);
-
+    var videoContainers = document.querySelectorAll('.not-in-use');
+    if(videoContainers.length>0){
+        videoContainers[0].classList.remove(".not-in-use");
+        videoContainers[0].firstElementChild.srcObject = event.stream;
+        videoContainers[0].firstElementChild.setAttribute('data-socket', id);
+    }else{   }
     
-
     updateLayOut();
 }
 
 function updateLayOut(){
-    var videos = document.querySelectorAll('video');
-    var peers = videos.length;
+    var videos = document.querySelectorAll('.not-in-use');
+    var peers = 12 - videos.length;
 
     var element = document.getElementById("videos");
     if(peers<=4){

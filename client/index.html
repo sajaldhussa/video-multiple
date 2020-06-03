@@ -10,13 +10,24 @@
         <div id="videos" class="videos one-grid">
             <div class="video-container">
                 <video id="localVideo" autoplay muted playsinline ></video>
-                
+                <div class="video-control">
+                    <i id ="allow-audio" class="fas fa-volume-mute"></i>
+                    <i id ="allow-video" class="fas fa-video-slash"></i>
+                </div>
             </div>
+
+            <div class="video-container not-in-use">
+                <video autoplay muted playsinline ></video>
+            </div>
+            <div class="video-container not-in-use">
+                <video autoplay playsinline ></video>
+            </div>
+            <div class="video-container not-in-use">
+                <video autoplay playsinline ></video>
+            </div>
+
         </div>
-        <div class="video-control">
-            <i id ="allow-audio" class="fas fa-volume-mute"></i>
-            <i id ="allow-video" class="fas fa-video-slash"></i>
-        </div>
+
         <br />
         <div id="connections"></div>
 
