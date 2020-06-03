@@ -41,7 +41,7 @@ function pageReady() {
                     socket.on('user-left', function(id){
                         var video = document.querySelector('[data-socket="'+ id +'"]');
                         var parentDiv = video.parentElement;
-                        video.parentElement.parentElement.removeChild(parentDiv);
+                        parentDiv.classList.add(".not-in-use");
                         updateLayOut();
                     });
 
@@ -98,11 +98,11 @@ function gotRemoteStream(event, id) {
 
     var videoContainers = document.querySelectorAll('.not-in-use');
     if(videoContainers.length>0){
-        videoContainers[0].classList.remove(".not-in-use");
         videoContainers[0].firstElementChild.srcObject = event.stream;
         videoContainers[0].firstElementChild.setAttribute('data-socket', id);
+        videoContainers[0].classList.remove(".not-in-use");
     }else{   }
-    
+
     updateLayOut();
 }
 
