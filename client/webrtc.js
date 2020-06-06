@@ -144,6 +144,10 @@ function mobileCheck() {
     return check;
   };
 
+  function mute(){
+    const localVideo = document.getElementById('localVideo');
+    localVideo.srcObject.getTracks().forEach(t => t.enabled = !t.enabled);
+  } 
 function gotMessageFromServer(fromId, message) {
 
     //Parse the incoming signal
