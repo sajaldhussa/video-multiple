@@ -30,7 +30,6 @@ io.on('connection', function(socket){
     })
 
 	socket.on('disconnect', function() {
-		const client = io.nsps['/'].adapter.rooms[meetingId].length;
 		io.sockets.in(meetingId).emit("user-left", socket.id);
 	})
 });
