@@ -5,12 +5,7 @@ Router.use(express.urlencoded())
 
 var AWS = require("aws-sdk");
 
-let awsConfig = {
-    "region": "us-east-2",
-    "endpoint": "http://dynamodb.us-east-2.amazonaws.com",
-    "accessKeyId": "", "secretAccessKey": ""
-};
-AWS.config.update(awsConfig);
+AWS.config.loadFromPath('.././config/config.json');
 
 let docClient = new AWS.DynamoDB.DocumentClient();
 const server = require('.././app')
