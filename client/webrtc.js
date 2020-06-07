@@ -151,7 +151,9 @@ function mobileCheck() {
   } 
 
   function closeTab(){
-    window.close();
+    if (confirm("Are you sure you want to leave the meeting?")) {
+        window.close();
+      }
   }
 function gotMessageFromServer(fromId, message) {
 

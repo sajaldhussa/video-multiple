@@ -14,6 +14,7 @@ app.set('socketio', io);
 let meetingId;;
 io.on('connection', function(socket){
    socket.on('create', function(room) {
+	   console.log(room);
 	  meetingId = room;
       socket.join(room);
       io.sockets.in(room).emit("user-joined", socket.id, io.nsps['/'].adapter.rooms[room].length, Object.keys(io.nsps['/'].adapter.rooms[room].sockets), room);
