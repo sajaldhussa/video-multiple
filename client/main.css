@@ -56,6 +56,7 @@ font-size: 2rem;
 
 @media only screen and (max-width: 600px) {
 	.control-icons{
-		font-size: 6rem;
+		font-size: 16rem;
+		color: orangered;
 		}
   }
