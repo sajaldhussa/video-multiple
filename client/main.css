@@ -46,7 +46,10 @@ html,body{
 
 #allow-audio , #allow-video{
 padding: 1rem;
-color: #42b22d;
+color: #555;
 cursor: pointer;
-font-size: xx-large;
+font-size: 2rem;
+}
+.red{
+	color: red;
 }

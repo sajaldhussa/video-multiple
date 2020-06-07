@@ -11,8 +11,9 @@
             <div class="video-container">
                 <video id="localVideo" autoplay muted playsinline ></video>
                 <div class="video-control">
-                    <i id ="allow-audio" class="fas fa-volume-mute"></i>
-                    <i id ="allow-video" class="fas fa-video-slash"></i>
+                    <i id ="allow-audio" class="fas fa-volume-mute" onclick="mute('audio')"></i>
+                    <i class="red fas fa-phone-slash" onclick="closeTab()"></i>
+                    <i id ="allow-video" class="fas fa-video-slash" onclick="mute('video')"></i>
                 </div>
             </div>
 

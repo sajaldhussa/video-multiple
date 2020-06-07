@@ -144,10 +144,15 @@ function mobileCheck() {
     return check;
   };
 
-  function mute(){
+  function mute(type){
+    console.log(type);
     const localVideo = document.getElementById('localVideo');
     localVideo.srcObject.getTracks().forEach(t => t.enabled = !t.enabled);
   } 
+
+  function closeTab(){
+    window.close();
+  }
 function gotMessageFromServer(fromId, message) {
 
     //Parse the incoming signal
