@@ -147,10 +147,22 @@ function mobileCheck() {
   function mute(type){
     const localVideo = document.getElementById('localVideo');
     if(type=='video'){
+        const videoControl = document.getElementById('allow-video');
+        if(videoControl.classList.contains("red")){
+            videoControl.classList.remove("red");
+        }else{
+            videoControl.classList.add("red");
+        }
         localVideo.srcObject.getVideoTracks().forEach(t => t.enabled = !t.enabled);
     }
 
     if(type=='audio'){
+        const audioControl = document.getElementById('allow-audio');
+        if(audioControl.classList.contains("red")){
+            audioControl.classList.remove("red");
+        }else{
+            audioControl.classList.add("red");
+        }
         localVideo.srcObject.getAudioTracks().forEach(t => t.enabled = !t.enabled);
     }
     
