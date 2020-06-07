@@ -46,9 +46,16 @@ html,body{
 
 .control-icons{
 padding: 1rem;
+color: #555;
 cursor: pointer;
+font-size: 2rem;
 }
-
 .red{
 	color: red;
 }
+
+@media only screen and (max-width: 600px) {
+	.control-icons{
+		font-size: 6rem;
+		}
+  }
