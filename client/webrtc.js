@@ -169,7 +169,9 @@ function mobileCheck() {
   } 
 
   function closeTab(){
-    window.location.replace("http://www.sajaldhussa.com");
+    if (confirm("Are you sure, you want to leave this meeting!")) {
+        window.location.replace("http://www.sajaldhussa.com");
+    } 
   }
 function gotMessageFromServer(fromId, message) {
 
