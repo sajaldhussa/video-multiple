@@ -145,13 +145,19 @@ function mobileCheck() {
   };
 
   function mute(type){
-    console.log(type);
     const localVideo = document.getElementById('localVideo');
-    localVideo.srcObject.getTracks().forEach(t => t.enabled = !t.enabled);
+    if(type=='video'){
+        localVideo.srcObject.getVideoTracks().forEach(t => t.enabled = !t.enabled);
+    }
+
+    if(type=='audio'){
+        localVideo.srcObject.getAudioTracks().forEach(t => t.enabled = !t.enabled);
+    }
+    
   } 
 
   function closeTab(){
-    window.close();
+    window.location.replace("http://www.sajaldhussa.com");
   }
 function gotMessageFromServer(fromId, message) {
 
