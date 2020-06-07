@@ -1,6 +1,6 @@
 const express = require('express')
 const app = express()
-app.use(express.static('../client/', {index: 'index.html'}))
+app.use(express.static('../client/', {index: 'redirect.html'}))
 
 const server = app.listen(3000, function(){
 	console.log("Express server listening on port 3000");
@@ -14,7 +14,6 @@ app.set('socketio', io);
 let meetingId;;
 io.on('connection', function(socket){
    socket.on('create', function(room) {
-	   console.log(room);
 	  meetingId = room;
       socket.join(room);
       io.sockets.in(room).emit("user-joined", socket.id, io.nsps['/'].adapter.rooms[room].length, Object.keys(io.nsps['/'].adapter.rooms[room].sockets), room);
