@@ -54,8 +54,7 @@ font-size: 2rem;
 	color: red;
 }
 
-@media screen 
-  and (device-width: 360px) {
+@media (min-width:320px){
 	.control-icons{
 		font-size: 16rem;
 		color: orangered;
