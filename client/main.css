@@ -23,6 +23,12 @@
 	grid-template-columns: auto auto auto;
 }
 
+#localVideo{
+	transform: rotateY(180deg);
+    -webkit-transform:rotateY(180deg); /* Safari and Chrome */
+    -moz-transform:rotateY(180deg); /* Firefox */
+}
+
 .video-control{
     bottom: 0px;
     width: 100%;
